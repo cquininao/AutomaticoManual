@@ -1,1 +1,20 @@
 library(tidyverse)
+plants <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/plants.csv")
+actions <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/actions.csv")
+threats <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/threats.csv")
+
+library(knitr)
+data("msleep")
+Tabla <- msleep %>% group_by(vore) %>% summarise_at("sleep_total", .funs = list(Mean = mean, SD = sd)) %>% arrange(desc(Mean))
+kable(Tabla)
+kable(Tabla,digits=2)
+kable(Tabla, caption = 'My first kable')
+kable(Tabla, digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+kable(Tabla, digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width=F)
+
+msleep_long <- msleep %>% dplyr::select(name, vore, sleep_total, brainwt)
+kable(msleep_long, digits = 2, caption='Full BBDD') %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width=F)%>%scroll_box(width = "800px", height = "200px")
+DF <- iris %>% group_by(Species) %>% summarize_all(mean)
+kable(DF, caption = 'My first kable', row.names=TRUE)
+
+World_20Happiness_20Report <- read_csv("https://raw.githubusercontent.com/PhilippeCodes/World-Happiness-Report-Data-Analysis/master/World%20Happiness%20Report.csv")
