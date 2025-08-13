@@ -18,3 +18,4 @@ DF <- iris %>% group_by(Species) %>% summarize_all(mean)
 kable(DF, caption = 'My first kable', row.names=TRUE)
 
 World_20Happiness_20Report <- read_csv("https://raw.githubusercontent.com/PhilippeCodes/World-Happiness-Report-Data-Analysis/master/World%20Happiness%20Report.csv")
+library(tidyverse)
